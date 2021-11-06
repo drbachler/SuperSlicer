@@ -508,18 +508,20 @@ void PhysicalPrinterDialog::update(bool printer_change)
             m_optgroup->show_field("printhost_apikey", auth_type == AuthorizationType::atKeyPassword);
             for (const char* opt_key : { "printhost_user", "printhost_password" })
                 m_optgroup->show_field(opt_key, auth_type == AuthorizationType::atUserPassword);
-        } else {
+	// hide api key and CA file for MPMDv2
+        } else if (opt && opt->value == htMPMDv2) {
+	    m_optgroup->hide_field("printhost_apikey");
+	    m_optgroup->hide_field("printhost_cafile");
+        // hide api key for klipper
+	} else if (opt && opt->value == htKlipper) {
+            m_optgroup->hide_field("printhost_apikey");
+	} else {
             m_optgroup->hide_field("printhost_authorization_type");
             m_optgroup->show_field("printhost_apikey", true);
+            m_optgroup->show_field("printhost_cafile", true);
             for (const std::string& opt_key : std::vector<std::string>{ "printhost_user", "printhost_password" })
                 m_optgroup->hide_field(opt_key);
             supports_multiple_printers = opt && opt->value == htRepetier;
-        }
-        
-
-        // hide api key for klipper
-        if (opt && opt->value == htKlipper) {
-            m_optgroup->hide_field("printhost_apikey");
         }
     }
     else {
