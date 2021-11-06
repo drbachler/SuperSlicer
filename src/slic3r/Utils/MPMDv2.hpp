@@ -40,31 +40,6 @@ private:
     std::string make_url(const std::string &path) const;
 };
 
-// class SL1Host: public MPMDv2
-// {
-// public:
-//     SL1Host(DynamicPrintConfig *config);
-//     ~SL1Host() override = default;
-// 
-//     const char* get_name() const override;
-// 
-//     wxString get_test_ok_msg() const override;
-//     wxString get_test_failed_msg(wxString &msg) const override;
-//     bool can_start_print() const override { return false; }
-// 
-// protected:
-//     bool validate_version_text(const boost::optional<std::string> &version_text) const override;
-// 
-// private:
-//     void set_auth(Http &http) const override;
-// 
-//     // Host authorization type.
-//     AuthorizationType authorization_type;
-//     // username and password for HTTP Digest Authentization (RFC RFC2617)
-//     std::string username;
-//     std::string password;
-// };
-
 }
 
 #endif
