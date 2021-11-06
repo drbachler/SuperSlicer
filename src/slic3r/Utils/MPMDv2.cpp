@@ -152,48 +152,4 @@ std::string MPMDv2::make_url(const std::string &path) const
     }
 }
 
-// SL1Host::SL1Host(DynamicPrintConfig *config) : 
-//     MPMDv2(config),
-//     authorization_type(dynamic_cast<const ConfigOptionEnum<AuthorizationType>*>(config->option("printhost_authorization_type"))->value),
-//     username(config->opt_string("printhost_user")),
-//     password(config->opt_string("printhost_password"))
-// {
-// }
-// 
-// // SL1Host
-// const char* SL1Host::get_name() const { return "SL1Host"; }
-// 
-// wxString SL1Host::get_test_ok_msg () const
-// {
-//     return  wxString::Format(_L("Connection to %s works correctly."), "Prusa SL1");
-// }
-// 
-// wxString SL1Host::get_test_failed_msg (wxString &msg) const
-// {
-//     return GUI::from_u8((boost::format("%s: %s")
-//                     % _utf8(L("Could not connect to Prusa SLA"))
-//                     % std::string(msg.ToUTF8())).str());
-// }
-// 
-// bool SL1Host::validate_version_text(const boost::optional<std::string> &version_text) const
-// {
-//     return version_text ? boost::starts_with(*version_text, "Prusa SLA") : false;
-// }
-// 
-// void SL1Host::set_auth(Http &http) const
-// {
-//     switch (authorization_type) {
-//     case atKeyPassword:
-//         http.header("X-Api-Key", get_apikey());
-//         break;
-//     case atUserPassword:
-//         http.auth_digest(username, password);
-//         break;
-//     }
-// 
-//     if (! get_cafile().empty()) {
-//         http.ca_file(get_cafile());
-//     }
-// }
-
 }
